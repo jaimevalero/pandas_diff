@@ -18,5 +18,15 @@ A,B , keys = pre_process(A, B, "hero")
 A["___keys"] = A[keys]
 B["___keys"] = B[keys]
 
-a=0
+deleted_keys = list( set(A["___keys"].values ) -  set(B["___keys"].values ))
+added_keys = list( set(B["___keys"].values ) -  set(A["___keys"].values ))
+
+A = A.set_index('___keys')
+B = B.set_index('___keys')
+results = []
+for added_key in added_keys:
+    results.append(format_results(B.loc[added_key,:] ,"create"))
+for deleted_key in deleted_keys:
+    results.append(format_results(A.loc[deleted_key,:],"delete"))
+
 
