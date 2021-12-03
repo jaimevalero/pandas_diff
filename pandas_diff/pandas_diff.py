@@ -33,6 +33,7 @@ def get_diffs(before : pd.DataFrame, after: pd.DataFrame, keys: list):
 
     A,B = before, after
 
+    A,B , keys = pre_process(A, B, keys)
     A["___keys"] = [ str(d) for d in A[keys].to_dict(orient="records") ]
     B["___keys"] = [ str(d) for d in B[keys].to_dict(orient="records") ]
 
