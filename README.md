@@ -18,14 +18,20 @@ Install pandas_diff with pip
 import pandas_diff as pd_diff
 
 import pandas as pd
-A = pd.DataFrame([{"hero" : "hulk" , "power" : "strength"},
+
+# Create two example dataframes
+df_infinity = pd.DataFrame([
+                {"hero" : "hulk" , "power" : "strength"},
                 {"hero" : "black_widow" , "power" : "spy"},
                 {"hero" : "thor" , "hammers" : 0 },
                 {"hero" : "thor" , "hammers" : 1 } ] )
-B = pd.DataFrame([{"hero" : "hulk" , "power" : "smart"},
+df_endgame = pd.DataFrame([
+                {"hero" : "hulk" , "power" : "smart"},
                 {"hero" : "captain marvel" , "power" : "strength"},
                 {"hero" : "thor" , "hammers" : 2 } ] )
-df = pd_diff.get_diffs(A,B,"hero")
+
+# Get differences, using the key "hero"
+df = pd_diff.get_diffs(df_infinity ,df_endgame ,"hero")
 
 df
 
