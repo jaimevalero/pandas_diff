@@ -28,7 +28,7 @@ def remove_dupes(compare_columns, df, name):
     duplicated_rows_in_df = df[df.duplicated(subset=compare_columns, keep=False)].shape[0]
     if duplicated_rows_in_df  :
         duplicated = str(df[df.duplicated(subset=compare_columns, keep=False)].to_dict(orient="records"))
-        message_warning = f"Found {duplicated_rows_in_df} duplicated rows in {name} dataframe: " + duplicated + ". Removing duplicates."
+        message_warning = f"Found {duplicated_rows_in_df} duplicated rows in {name} dataframe: " + duplicated + ". Removing duplicates, except last occurrente."
         warnings.warn(message_warning)
         df = df.drop_duplicates(subset=compare_columns, keep="last")
     return df
@@ -56,7 +56,7 @@ def normalize_columns(df_before : pd.DataFrame, df_after: pd.DataFrame) -> list:
 def normalize_keys(compare_columns) -> list :
     keys = []
     if isinstance(compare_columns, str):
-        keys.append(compare_columns)
+        keys = compare_columns.split(",")
     elif isinstance(compare_columns, list):
         keys = compare_columns
     return keys
