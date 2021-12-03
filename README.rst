@@ -19,6 +19,7 @@ Pandas Diff
 Python utility to extract differences between two pandas dataframes.
 
 
+
 * Free software: MIT license
 * Documentation: https://pandas-diff.readthedocs.io.
 
