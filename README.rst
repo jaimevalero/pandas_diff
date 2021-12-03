@@ -26,3 +26,4 @@ Features
 
 * Support for stand alone app
 
+

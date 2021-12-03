@@ -18,10 +18,6 @@ import click
 #B["___keys"] = B[keys]
 
 
-@click.command()
-@click.option('--before',  help='Path to the before file. (.csv)' )
-@click.option('--after',  help='Path to the after file. (.csv)' )
-@click.option('--keys',  help='Keys to compare. (comma separated)' )
 
 def load_dataframe(file: str)-> pd.DataFrame:
     """ Load a dataframe from """
@@ -78,19 +74,4 @@ def get_diffs(before : pd.DataFrame, after: pd.DataFrame, keys: list):
     df = pd.DataFrame(results)
     return df
 
-def main(before,after,keys):
-    """Main function."""
-    A = load_dataframe(before)
-    B = load_dataframe(after)
-    df = get_diffs(A,B,keys)
-    print(df)
 
-#if __name__ == '__main__':
-#    #main()
-#    a=0
-
-
-
-
-if __name__ == '__main__':
-    unittest.main()

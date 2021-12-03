@@ -5,3 +5,5 @@ __email__ = 'jaimevalero78@gmail.com'
 __version__ = '0.1.0'
 
 import pandas as pd
+import pandas_diff.pandas_diff
+import pre_process
