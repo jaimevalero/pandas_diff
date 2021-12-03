@@ -19,9 +19,7 @@ import click
 
 
 
-def load_dataframe(file: str)-> pd.DataFrame:
-    """ Load a dataframe from """
-    return pd.read_csv(file)
+
 
 def get_diffs(before : pd.DataFrame, after: pd.DataFrame, keys: list):
     """[Generate DataFrame with differences between two DataFrames]
