@@ -21,7 +21,7 @@ deploy:
   distributions: sdist bdist_wheel
   user: jaimevalero
   password:
-    secure: PLEASE_REPLACE_ME
+    secure: REPLACE
   on:
     tags: true
     repo: jaimevalero/pandas_diff
