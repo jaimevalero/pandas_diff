@@ -11,7 +11,7 @@ Pandas Diff
         :alt: Documentation Status
 
 
-
+Currently under development !!!
 
 Python utility to extract differences between two pandas dataframes.
 
