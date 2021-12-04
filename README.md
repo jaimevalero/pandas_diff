@@ -1,6 +1,6 @@
 
 # Pandas Diff
-
+[![CodeFactor](https://www.codefactor.io/repository/github/jaimevalero/pandas_diff/badge)](https://www.codefactor.io/repository/github/jaimevalero/pandas_diff)
 [![Python 3](https://pyup.io/repos/github/jaimevalero/pandas_diff/python-3-shield.svg)](https://pyup.io/repos/github/jaimevalero/pandas_diff/)
 
 

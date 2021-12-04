@@ -106,3 +106,4 @@ ENV/
 .idea/
 
 .travis.yml
+start.sh
