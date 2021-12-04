@@ -1,6 +1,7 @@
 
 # Pandas Diff
 
+[![Python 3](https://pyup.io/repos/github/jaimevalero/pandas_diff/python-3-shield.svg)](https://pyup.io/repos/github/jaimevalero/pandas_diff/)
 
 
 ## Installation
@@ -8,7 +9,7 @@
 Install pandas_diff with pip
 
 ```bash
-  pip install pandas_diff
+pip install pandas_diff
 ```
 
 
@@ -55,8 +56,13 @@ By using pandas_diff we detect how the infraestructure changes between execution
 
 For every item in a table, by using pandas_diff you will have an event log of how the resources are being consumed.
 
-## To-do features
+## Roadmap
 
 * Support for stand alone app
 * Blacklist of columns
+
+
+## Documentation
+
+[Documentation](https://pandas-diff.readthedocs.io/en/latest/)
 
