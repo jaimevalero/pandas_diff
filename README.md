@@ -56,7 +56,8 @@ By using pandas_diff we detect how the infraestructure changes between execution
 
 For every item in a table, by using pandas_diff you will have an event log of how the resources are being consumed.
 
-## Roadmap
+## Roadmap
+
 
 * Support for stand alone app
 * Blacklist of columns
