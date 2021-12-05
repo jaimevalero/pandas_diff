@@ -6,7 +6,7 @@ from pandas_diff.process_results import format_results_modify , format_results_c
 #A = pd.DataFrame([{"hero" : "hulk" , "power" : "strength", "false_key" : "1"},
 #                  {"hero" : "black_widow" , "power" : "spy" , "false_key" : "2"},
 #                  {"hero" : "thor" , "hammers" : 0 , "false_key" : "3" },
-#                  {"hero" : "thor" , "hammers" : 1 ,  "false_key" : "4"} ] )
+#             H     {"hero" : "thor" , "hammers" : 1 ,  "false_key" : "4"} ] )
 #B = pd.DataFrame([{"hero" : "hulk" , "power" : "smart",  "false_key" : "1"},
 #                 {"hero" : "captain marvel" , "power" : "strength",  "false_key" : "5"},
 #                 {"hero" : "thor" , "hammers" : 2 ,  "false_key" : "3"} ] )
@@ -20,13 +20,14 @@ from pandas_diff.process_results import format_results_modify , format_results_c
 
 
 
-def get_diffs(before : pd.DataFrame, after: pd.DataFrame, keys: list):
+def get_diffs(before : pd.DataFrame, after: pd.DataFrame, keys: list, ignore_columns=[]):
     """[Generate DataFrame with differences between two DataFrames]
 
     Args:
-        A (pd.DataFrame): [Before DataFrame]
-        B (pd.DataFrame): [After DataFrame ]
-        keys (list): [description]
+        A (pd.DataFrame): Before DataFrame
+        B (pd.DataFrame): After DataFrame 
+        keys (list): Key fields
+        ignore_columns (list): Columns to not be considered for modify options 
     """    """ Get the diffs between two dataframes."""
     results = []
 
@@ -59,6 +60,9 @@ def get_diffs(before : pd.DataFrame, after: pd.DataFrame, keys: list):
 
     for common_key in common_keys:
         for col in columns_not_keys:
+            if col in ignore_columns: 
+                continue
+            # Check if the value has changed 
             are_different_non_null_values = A.loc[common_key,col] != B.loc[common_key,col] and not ( pd.isna(A.loc[common_key,col] ) and pd.isna(B.loc[common_key,col] ) )
             if are_different_non_null_values :
                 result = format_results_modify(
