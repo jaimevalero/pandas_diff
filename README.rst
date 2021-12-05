@@ -1,64 +1,83 @@
-===========
 Pandas Diff
 ===========
 
+|CodeFactor| |Python 3|
 
-.. image:: https://img.shields.io/pypi/v/pandas_diff.svg
-        :target: https://pypi.python.org/pypi/pandas_diff
-
-.. image:: https://readthedocs.org/projects/pandas-diff/badge/?version=latest
-        :target: https://pandas-diff.readthedocs.io/en/latest/?version=latest
-        :alt: Documentation Status
-
-
-Currently under development !!!
-
-Python utility to extract differences between two pandas dataframes.
-
-
-
-* Free software: MIT license
-* Documentation: https://pandas-diff.readthedocs.io.
-
-## Installation
+Installation
+------------
 
 Install pandas_diff with pip
 
-```bash
-  pip install pandas_diff
-```
+.. code:: bash
 
+   pip install pandas_diff
 
-## Usage/Examples
+Usage/Examples
+--------------
 
-```python
-import pandas_diff as pd_diff
+.. code:: python
 
-import pandas as pd
-A = pd.DataFrame([{"hero" : "hulk" , "power" : "strength"},
-                {"hero" : "black_widow" , "power" : "spy"},
-                {"hero" : "thor" , "hammers" : 0 },
-                {"hero" : "thor" , "hammers" : 1 } ] )
-B = pd.DataFrame([{"hero" : "hulk" , "power" : "smart"},
-                {"hero" : "captain marvel" , "power" : "strength"},
-                {"hero" : "thor" , "hammers" : 2 } ] )
-df = pd_diff.get_diffs(A,B,"hero")
+   import pandas_diff as pd_diff
 
-df
+   import pandas as pd
 
-  operation object_keys  object_values                     object_json                     attribute_changed old_value new_value
-0   create     [hero]    captain marvel  {'hero': 'captain marvel', 'power': 'strength'...           NaN           NaN      NaN
-1   delete     [hero]       black_widow  {'hero': 'black_widow', 'power': 'spy', 'hamme...           NaN           NaN      NaN
-2   modify     [hero]              thor     {'hero': 'thor', 'power': nan, 'hammers': 2.0}       hammers             1        2
-3   modify     [hero]              hulk  {'hero': 'hulk', 'power': 'smart', 'hammers': ...         power      strength    smart
+   # Create two example dataframes
+   df_infinity = pd.DataFrame([
+                   {"hero" : "hulk" , "power" : "strength"},
+                   {"hero" : "black_widow" , "power" : "spy"},
+                   {"hero" : "thor" , "hammers" : 0 },
+                   {"hero" : "thor" , "hammers" : 1 } ] )
+   df_endgame = pd.DataFrame([
+                   {"hero" : "hulk" , "power" : "smart"},
+                   {"hero" : "captain marvel" , "power" : "strength"},
+                   {"hero" : "thor" , "hammers" : 2 } ] )
 
-```
+   # Get differences, using the key "hero"
+   df = pd_diff.get_diffs(df_infinity ,df_endgame ,"hero")
 
+   df
 
+     operation object_keys  object_values                     object_json                     attribute_changed old_value new_value
+   0   create     [hero]    captain marvel  {'hero': 'captain marvel', 'power': 'strength'...           NaN           NaN      NaN
+   1   delete     [hero]       black_widow  {'hero': 'black_widow', 'power': 'spy', 'hamme...           NaN           NaN      NaN
+   2   modify     [hero]              thor     {'hero': 'thor', 'power': nan, 'hammers': 2.0}       hammers             1        2
+   3   modify     [hero]              hulk  {'hero': 'hulk', 'power': 'smart', 'hammers': ...         power      strength    smart
 
-Features
---------
+Why pandas diff ? Cases of use
+------------------------------
 
-* Support for stand alone app
+Migrating from batch to an event driven architecture
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+In my work, we use a lot of data pipelines to get info from external
+platforms, (active directory, github, jira). We load the new data
+replacing the entire table.
+
+By using pandas_diff we detect how the infraestructure changes between
+executions, and stream those change events into a kafka cluster, so
+other teams could suscribe to their favourite events. Also, by defining
+a pandas_diff step in the master pipeline, every item in our project has
+ther life cycle events controlled.
+
+Events log
+~~~~~~~~~~
+
+For every item in a table, by using pandas_diff you will have an event
+log of how the resources are being consumed.
+
+Roadmap
+-------
+
+-  Support for stand alone app
+-  Blacklist of columns
+
+Documentation
+-------------
+
+`Documentation <https://pandas-diff.readthedocs.io/en/latest/>`__
+
+.. |CodeFactor| image:: https://www.codefactor.io/repository/github/jaimevalero/pandas_diff/badge
+   :target: https://www.codefactor.io/repository/github/jaimevalero/pandas_diff
+.. |Python 3| image:: https://pyup.io/repos/github/jaimevalero/pandas_diff/python-3-shield.svg
+   :target: https://pyup.io/repos/github/jaimevalero/pandas_diff/
 
