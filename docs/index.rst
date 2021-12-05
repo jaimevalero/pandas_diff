@@ -1,5 +1,5 @@
 Welcome to Pandas Diff's documentation!
-======================================
+=======================================
 
 .. toctree::
    :maxdepth: 2
