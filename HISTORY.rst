@@ -36,3 +36,8 @@ History
 
 \* Bump to test doc 
 
+0.7.13 (2021-12-05)
+-------------------
+
+\* bump version 
+
