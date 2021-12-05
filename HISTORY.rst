@@ -31,3 +31,8 @@ History
 
 \* Add pandas req 
 
+0.7.12 (2021-12-05)
+-------------------
+
+\* Bump to test doc 
+
