@@ -81,3 +81,8 @@ History
 
 \* Add codacy badge 
 
+0.7.19 (2021-12-05)
+-------------------
+
+\* Add codacy badge 
+
