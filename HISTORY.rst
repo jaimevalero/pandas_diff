@@ -26,3 +26,8 @@ History
 
 \* Add pandas req 
 
+0.7.11 (2021-12-05)
+-------------------
+
+\* Add pandas req 
+
