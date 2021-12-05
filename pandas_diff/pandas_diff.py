@@ -3,23 +3,6 @@ import pandas as pd
 from pandas_diff.pre_process import pre_process
 from pandas_diff.process_results import format_results_modify , format_results_create_delete
 
-#A = pd.DataFrame([{"hero" : "hulk" , "power" : "strength", "false_key" : "1"},
-#                  {"hero" : "black_widow" , "power" : "spy" , "false_key" : "2"},
-#                  {"hero" : "thor" , "hammers" : 0 , "false_key" : "3" },
-#             H     {"hero" : "thor" , "hammers" : 1 ,  "false_key" : "4"} ] )
-#B = pd.DataFrame([{"hero" : "hulk" , "power" : "smart",  "false_key" : "1"},
-#                 {"hero" : "captain marvel" , "power" : "strength",  "false_key" : "5"},
-#                 {"hero" : "thor" , "hammers" : 2 ,  "false_key" : "3"} ] )
-#A,B , keys = pre_process(A, B, ["hero","false_key"])
-
-
-#A["___keys"] = A[keys]
-#B["___keys"] = B[keys]
-
-
-
-
-
 def get_diffs(before : pd.DataFrame, after: pd.DataFrame, keys: list, ignore_columns=[]):
     """[Generate DataFrame with differences between two DataFrames]
 
