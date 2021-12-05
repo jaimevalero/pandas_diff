@@ -96,3 +96,8 @@ History
 
 \* Feat filter column 
 
+0.7.21 (2021-12-05)
+-------------------
+
+\* Add filter fest 
+
