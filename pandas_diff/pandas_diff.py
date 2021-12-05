@@ -2,7 +2,6 @@
 import pandas as pd
 from pandas_diff.pre_process import pre_process
 from pandas_diff.process_results import format_results_modify , format_results_create_delete
-import click
 
 #A = pd.DataFrame([{"hero" : "hulk" , "power" : "strength", "false_key" : "1"},
 #                  {"hero" : "black_widow" , "power" : "spy" , "false_key" : "2"},
