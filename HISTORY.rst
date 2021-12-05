@@ -61,3 +61,8 @@ History
 
 \* bump version 
 
+0.7.16 (2021-12-05)
+-------------------
+
+\* bump version 
+
