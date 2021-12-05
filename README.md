@@ -3,8 +3,7 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/jaimevalero/pandas_diff/badge)](https://www.codefactor.io/repository/github/jaimevalero/pandas_diff)
 [![Documentation Status](https://readthedocs.org/projects/pandas-diff/badge/?version=latest)](https://pandas-diff.readthedocs.io/en/latest/?badge=latest)
 [![Python 3](https://pyup.io/repos/github/jaimevalero/pandas_diff/python-3-shield.svg)](https://pyup.io/repos/github/jaimevalero/pandas_diff/)
-[![Documentation Status](https://readthedocs.org/projects/pandas-diff/badge/?version=latest)](https://pandas-diff.readthedocs.io/en/latest/?badge=latest)
-
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/bd60be67332644e2a64401b6f44a3b12)](https://www.codacy.com/gh/jaimevalero/pandas_diff/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jaimevalero/pandas_diff&amp;utm_campaign=Badge_Grade)
 
 ## Installation
 
