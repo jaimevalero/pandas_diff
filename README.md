@@ -1,7 +1,9 @@
 
 # Pandas Diff
 [![CodeFactor](https://www.codefactor.io/repository/github/jaimevalero/pandas_diff/badge)](https://www.codefactor.io/repository/github/jaimevalero/pandas_diff)
+[![Documentation Status](https://readthedocs.org/projects/pandas-diff/badge/?version=latest)](https://pandas-diff.readthedocs.io/en/latest/?badge=latest)
 [![Python 3](https://pyup.io/repos/github/jaimevalero/pandas_diff/python-3-shield.svg)](https://pyup.io/repos/github/jaimevalero/pandas_diff/)
+[![Documentation Status](https://readthedocs.org/projects/pandas-diff/badge/?version=latest)](https://pandas-diff.readthedocs.io/en/latest/?badge=latest)
 
 
 ## Installation
