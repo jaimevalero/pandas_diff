@@ -2,7 +2,7 @@
 
 __author__ = """Jaime Valero"""
 __email__ = 'jaimevalero78@gmail.com'
-__version__ = '0.7.9'
+__version__ = '0.7.10'
 
 import pandas as pd
 
