@@ -91,3 +91,8 @@ History
 
 \* Feat filter column 
 
+0.7.20 (2021-12-05)
+-------------------
+
+\* Feat filter column 
+
