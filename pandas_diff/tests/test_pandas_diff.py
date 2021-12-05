@@ -33,6 +33,17 @@ class TestStringMethods(unittest.TestCase):
         order = df.columns.values
         result =len([i for i, j in zip(order, ORDER_EXPECTED) if i == j])
         self.assertEqual(result,7)
+    def test_columns_filter(self):
+        A = pd.DataFrame([{"hero" : "hulk" , "power" : "strength"},
+                        {"hero" : "black_widow" , "power" : "spy"},
+                        {"hero" : "thor" , "hammers" : 0 } ] )
+        B = pd.DataFrame([{"hero" : "hulk" , "power" : "smart"},
+                        {"hero" : "captain marvel" , "power" : "strength"},
+                        {"hero" : "thor" , "hammers" : 2 } ] )
+        A,B , keys = pre_process(A, B, ["hero"])
+        df = pd_diff.get_diffs(A ,B ,"hero", ignore_columns=["power"])
+        self.assertEqual(df.shape[0],3)
+
 
 if __name__ == '__main__':
     unittest.main()
