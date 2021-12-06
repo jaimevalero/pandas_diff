@@ -44,6 +44,6 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/jaimevalero/pandas_diff',
-    version='0.7.21',
+    version='version='0.7.21'',
     zip_safe=False,
 )
