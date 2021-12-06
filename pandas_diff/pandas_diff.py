@@ -4,14 +4,14 @@ from pandas_diff.pre_process import pre_process
 from pandas_diff.process_results import format_results_modify , format_results_create_delete
 
 def get_diffs(before : pd.DataFrame, after: pd.DataFrame, keys: list, ignore_columns=[]):
-    """[Generate DataFrame with differences between two DataFrames]
+    """ Generate DataFrame with differences between two DataFrames
 
     Args:
-        A (pd.DataFrame): Before DataFrame
-        B (pd.DataFrame): After DataFrame 
+        before (pd.DataFrame): Before DataFrame
+        after(pd.DataFrame): After DataFrame 
         keys (list): Key fields
-        ignore_columns (list): Columns to not be considered for modify options 
-    """    """ Get the diffs between two dataframes."""
+        ignore_columns (list): Columns to not be considered for modify options (optional)
+    """   
     results = []
 
     A,B = before, after
