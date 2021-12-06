@@ -47,7 +47,8 @@ df
 
 ## Why pandas diff ? Cases of use
 
-### Migrating from batch to an event driven architecture
+
+### Migrate from batch to event driven architecture
 
 In my work, we use a lot of data pipelines to get info from external
 platforms, (active directory, github, jira). We load the new data
