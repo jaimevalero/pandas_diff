@@ -18,10 +18,24 @@ def pre_process(df_before: pd.DataFrame , df_after: pd.DataFrame, compare_column
     keys = normalize_keys(compare_columns)
     A,B = normalize_columns(df_before, df_after)
 
+    ensure_keys_exist(keys,A)
+    ensure_keys_exist(keys,B)
+
     A = remove_dupes(compare_columns, A, "before")
     B = remove_dupes(compare_columns, B, "after")
 
     return A,B, keys
+
+
+def ensure_keys_exist(keys,df):
+    """ Ensure keys exist in columns of the dataframe"""
+    if len(keys) == 0 :  
+        raise ValueError(f"Key field {key} empty")
+    columns = df.columns.values
+    for key in keys:
+        if key not in columns:
+            raise ValueError(f"Key field {key} not in columns {columns}")
+    return
 
 def remove_dupes(compare_columns, df, name):
     """ Check if the dataframe has duplicate rows. And remove them. """
