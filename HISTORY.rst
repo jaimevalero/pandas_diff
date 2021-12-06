@@ -32,3 +32,8 @@ History
 -------------------
 
 \* Add confition keys exist in df's
+1.2.0 (2021-12-06)
+--------------------
+
+\* Improve doc 
+
