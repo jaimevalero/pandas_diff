@@ -1,4 +1,4 @@
-
+I
 # Pandas Diff
 [![CodeFactor](https://www.codefactor.io/repository/github/jaimevalero/pandas_diff/badge)](https://www.codefactor.io/repository/github/jaimevalero/pandas_diff)
 [![Documentation Status](https://readthedocs.org/projects/pandas-diff/badge/?version=latest)](https://pandas-diff.readthedocs.io/en/latest/?badge=latest)
@@ -48,7 +48,9 @@ df
 ## Why pandas diff ? Cases of use
 
 
+
 ### Migrate from batch to event driven architecture
+
 
 In my work, we use a lot of data pipelines to get info from external
 platforms, (active directory, github, jira). We load the new data
@@ -60,14 +62,19 @@ other teams could suscribe to their favourite events. Also, by defining
 a pandas_diff step in the master pipeline, every item in our project has
 ther life cycle events controlled.
 
+
 ### Events log
+
 
 For every item in a table, by using pandas_diff you will have an event
 log to audit of how the resources are being consumed.
 
+
 ### Conciliation
 
+
 To conciliate one datasource against the source of truth. Eg: You have a CMDB controlling with info regarding virtual machines. As there are several methods for creating those VMs, you use pandas_diff to replicate state of the infraestructure against the CMDB.
+
 
 ## Features
 
