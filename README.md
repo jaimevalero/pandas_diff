@@ -1,4 +1,4 @@
-I
+
 # Pandas Diff
 [![CodeFactor](https://www.codefactor.io/repository/github/jaimevalero/pandas_diff/badge)](https://www.codefactor.io/repository/github/jaimevalero/pandas_diff)
 [![Documentation Status](https://readthedocs.org/projects/pandas-diff/badge/?version=latest)](https://pandas-diff.readthedocs.io/en/latest/?badge=latest)
@@ -63,7 +63,7 @@ a pandas_diff step in the master pipeline, every item in our project has
 ther life cycle events controlled.
 
 
-### Events log
+<h3> Events log </h3>
 
 
 For every item in a table, by using pandas_diff you will have an event
