@@ -101,3 +101,8 @@ History
 
 \* Add filter fest 
 
+version= (2021-12-06)
+-------------------
+
+\* Add confition keys exist in df's 
+
