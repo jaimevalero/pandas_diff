@@ -47,24 +47,35 @@ df
 
 ## Why pandas diff ? Cases of use
 
-### Migrating from batch to an event driven architecture
+### Migrating from batch to an event driven architecture
 
-In my work, we use a lot of data pipelines to get info from external platforms, (active directory, github, jira). We load the new data replacing the entire table. 
+In my work, we use a lot of data pipelines to get info from external
+platforms, (active directory, github, jira). We load the new data
+replacing the entire table.
 
-By using pandas_diff we detect how the infraestructure changes between executions, and stream those change events into a kafka cluster, so other teams could suscribe to their favourite events. Also, by defining a pandas_diff step in the master pipeline, every item in our project has ther life cycle events controlled.
+By using pandas_diff we detect how the infraestructure changes between
+executions, and stream those change events into a kafka cluster, so
+other teams could suscribe to their favourite events. Also, by defining
+a pandas_diff step in the master pipeline, every item in our project has
+ther life cycle events controlled.
 
-### Events log
+### Events log
 
-For every item in a table, by using pandas_diff you will have an event log of how the resources are being consumed.
+For every item in a table, by using pandas_diff you will have an event
+log to audit of how the resources are being consumed.
+
+### Conciliation
+
+To conciliate one datasource against the source of truth. Eg: You have a CMDB controlling with info regarding virtual machines. As there are several methods for creating those VMs, you use pandas_diff to replicate state of the infraestructure against the CMDB.
+
+## Features
+
+* Blacklist of columns
 
 ## Roadmap
 
-
 * Support for stand alone app
-* Blacklist of columns
-
 
 ## Documentation
 
 [Documentation](https://pandas-diff.readthedocs.io/en/latest/)
-

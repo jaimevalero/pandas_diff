@@ -7,7 +7,7 @@ Welcome to Pandas Diff's documentation!
 
    readme
    installation
-   usage
+   examples
    modules
    contributing
    authors

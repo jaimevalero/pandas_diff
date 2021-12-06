@@ -8,8 +8,11 @@ def get_diffs(before : pd.DataFrame, after: pd.DataFrame, keys: list, ignore_col
 
     Args:
         before (pd.DataFrame): Before DataFrame
+
         after(pd.DataFrame): After DataFrame 
+
         keys (list): Key fields
+
         ignore_columns (list): Columns to not be considered for modify options (optional)
     """   
     results = []

@@ -63,13 +63,22 @@ Events log
 ~~~~~~~~~~
 
 For every item in a table, by using pandas_diff you will have an event
-log of how the resources are being consumed.
+log to audit of how the resources are being consumed.
+
+Conciliation
+~~~~~~~~~~~~
+
+To conciliate one datasource against the source of truth. Eg: You have a CMDB controlling with info regarding virtual machines. As there are several methods for creating those VMs, you use pandas_diff to replicate state of the infraestructure against the CMDB.
+
+Features
+--------
+
+-  Filtering of columns
 
 Roadmap
 -------
 
 -  Support for stand alone app
--  Blacklist of columns
 
 Documentation
 -------------

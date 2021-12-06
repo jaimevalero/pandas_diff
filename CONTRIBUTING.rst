@@ -96,23 +96,15 @@ Ready to contribute? Here's how to set up `pandas_diff` for local development.
 Pull Request Guidelines
 -----------------------
 
-Before you submit a pull request, check that it meets these guidelines:
-
-1. The pull request should include tests.
-2. If the pull request adds functionality, the docs should be updated. Put
-   your new functionality into a function with a docstring, and add the
-   feature to the list in README.rst.
-3. The pull request should work for Python 3.5, 3.6, 3.7 and 3.8, and for PyPy. Check
-   https://travis-ci.com/jaimevalero/pandas_diff/pull_requests
-   and make sure that the tests pass for all supported Python versions.
+The pull request should include tests.
 
 Tips
 ----
 
-To run a subset of tests::
+To run tests::
 
 
-    $ python -m unittest tests.test_pandas_diff
+    $  python -m unittest tests.test_pandas_diff 
 
 Deploying
 ---------
