@@ -47,3 +47,8 @@ History
 
 \* Remove workflows 
 
+1.4.0 (2021-12-06)
+--------------------
+
+\* Remove workflows 
+
