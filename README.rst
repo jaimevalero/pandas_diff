@@ -22,7 +22,7 @@ Usage/Examples
    import pandas as pd
 
    # Create two example dataframes
-   df_infinity = pd.DataFrame([
+   df_infinity_war = pd.DataFrame([
                    {"hero" : "hulk" , "power" : "strength"},
                    {"hero" : "black_widow" , "power" : "spy"},
                    {"hero" : "thor" , "hammers" : 0 },
@@ -33,7 +33,7 @@ Usage/Examples
                    {"hero" : "thor" , "hammers" : 2 } ] )
 
    # Get differences, using the key "hero"
-   df = pd_diff.get_diffs(df_infinity ,df_endgame ,"hero")
+   df = pd_diff.get_diffs(df_infinity_war ,df_endgame ,"hero")
 
    df
 

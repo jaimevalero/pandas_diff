@@ -37,3 +37,8 @@ History
 
 \* Improve doc 
 
+1.2.0 (2021-12-06)
+--------------------
+
+\* Improve doc 
+
