@@ -75,6 +75,7 @@ To conciliate one datasource against the source of truth. Eg: You have a CMDB co
 
 * Blacklist of columns
 
+
 ## Roadmap
 
 * Support for stand alone app
