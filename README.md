@@ -83,3 +83,4 @@ To conciliate one datasource against the source of truth. Eg: You have a CMDB co
 ## Documentation
 
 [Documentation](https://pandas-diff.readthedocs.io/en/latest/)
+
