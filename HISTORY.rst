@@ -52,3 +52,8 @@ History
 
 \* Remove workflows 
 
+1.4.0 (2023-09-01)
+--------------------
+
+\* Improve doc 
+
