@@ -57,3 +57,8 @@ History
 
 \* Improve doc 
 
+1.4.1 (2023-09-01)
+--------------------
+
+\* Improve doc 
+
