@@ -62,3 +62,8 @@ History
 
 \* Improve doc
 
+1.4.2 (2023-09-17)
+--------------------
+
+\* bugfix version 
+
