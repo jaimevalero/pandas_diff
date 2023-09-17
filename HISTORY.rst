@@ -87,3 +87,8 @@ History
 
 \* bugfix history string 
 
+1.4.7 (2023-09-17)
+--------------------
+
+\* bugfix release description 
+
