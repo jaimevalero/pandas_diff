@@ -27,6 +27,8 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',        
     ],
     description="Python utility to extract differences between two pandas dataframes.",
     entry_points={
@@ -44,6 +46,6 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/jaimevalero/pandas_diff',
-    version='version='1.4.1'',
+    version='version='1.4.1',
     zip_safe=False,
 )
