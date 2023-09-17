@@ -70,3 +70,8 @@ History
 
 \* bugfix version tag 
 
+1.4.4 (2023-09-17)
+--------------------
+
+\* bugfix version tag 
+
