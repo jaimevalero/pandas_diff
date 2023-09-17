@@ -68,9 +68,12 @@ ther life cycle events controlled.
 For every item in a table, by using pandas_diff you will have an event
 log to audit of how the resources are being consumed.
 
-<h3>Conciliation</h3>
+<h3>Conciliation of info</h3>
 
-To conciliate one datasource against the source of truth. Eg: You have a CMDB controlling with info regarding virtual machines. As there are several methods for creating those VMs, you use pandas_diff to replicate state of the infraestructure against the CMDB.
+To conciliate one datasource against the source of truth. Eg: You have a CMDB controlling with info regarding virtual machines. As there are several methods for creating those VMs, you use pandas_diff to replicate state of the infraestructure against the CMDB. 
+
+<h3>Disaster recovery environments</h3>
+Eg: You have a disaster recovery environment for your platform. You can synch two platforms, production and disaster recovery, using their APIs and pandas_diff to propagate the changes (in objects, users, permissions) from production to disaster recovery environments.
 
 
 ## Features
