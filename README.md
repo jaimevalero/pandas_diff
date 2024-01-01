@@ -66,7 +66,7 @@ ther life cycle events controlled.
 
 
 For every item in a table, by using pandas_diff you will have an event
-log to audit of how the resources are being consumed.
+log to audit listing how the resources are being consumed.
 
 <h3>Conciliation of info</h3>
 
