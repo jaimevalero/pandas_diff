@@ -1,0 +1,62 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pandas_diff"
+version = "2.0.0"
+description = "Generate event logs of changes between two pandas DataFrames."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.8"
+authors = [
+    { name = "Jaime Valero", email = "jaimevalero78@gmail.com" },
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "pandas>=1.5",
+    "click>=7.0",
+]
+keywords = ["pandas", "dataframe", "diff", "changelog", "event-log"]
+
+[project.optional-dependencies]
+parquet = ["pyarrow>=10.0"]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "ruff>=0.4.0",
+]
+
+[project.scripts]
+pandas_diff = "pandas_diff.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/jaimevalero/pandas_diff"
+Repository = "https://github.com/jaimevalero/pandas_diff"
+Issues = "https://github.com/jaimevalero/pandas_diff/issues"
+
+[tool.ruff]
+target-version = "py38"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["pandas_diff"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 85

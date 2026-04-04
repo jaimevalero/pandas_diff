@@ -105,5 +105,16 @@ ENV/
 .vscode/
 .idea/
 
-.travis.yml
 start.sh
+
+# Coverage
+.coverage
+coverage.xml
+htmlcov/
+
+# Build
+dist/
+*.egg-info/
+
+# Plans (internal)
+.plans/
