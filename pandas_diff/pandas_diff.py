@@ -1,44 +1,66 @@
 """Main module."""
-import pandas as pd
-from pandas_diff.pre_process import pre_process
-from pandas_diff.process_results import format_results_modify , format_results_create_delete
 
-def get_diffs(before : pd.DataFrame, after: pd.DataFrame, keys: list, ignore_columns=[]):
-    """ Generate DataFrame with differences between two DataFrames
+from __future__ import annotations
+
+import pandas as pd
+
+from pandas_diff.pre_process import pre_process
+from pandas_diff.process_results import format_results_create_delete, format_results_modify
+
+
+def get_diffs(
+    before: pd.DataFrame,
+    after: pd.DataFrame,
+    keys: list[str] | str,
+    ignore_columns: list[str] | None = None,
+) -> pd.DataFrame:
+    """Generate DataFrame with differences between two DataFrames.
 
     Args:
-        before (pd.DataFrame): Before DataFrame
+        before: DataFrame representing the previous state.
+        after: DataFrame representing the current state.
+        keys: Column name(s) used to identify rows.
+        ignore_columns: Columns to exclude from comparison.
 
-        after(pd.DataFrame): After DataFrame 
+    Returns:
+        DataFrame with columns: operation, object_keys, object_values,
+        object_json, attribute_changed, old_value, new_value.
 
-        keys (list): Key fields
+    Raises:
+        TypeError: If before or after are not DataFrames.
+        ValueError: If keys is empty or not found in columns.
+    """
+    if not isinstance(before, pd.DataFrame):
+        raise TypeError(f"before must be a pandas DataFrame, got {type(before).__name__}")
+    if not isinstance(after, pd.DataFrame):
+        raise TypeError(f"after must be a pandas DataFrame, got {type(after).__name__}")
 
-        ignore_columns (list): Columns to not be considered for modify options (optional)
-    """   
+    if ignore_columns is None:
+        ignore_columns = []
+
     results = []
 
-    A,B = before, after
+    A, B = before, after
 
-    A,B , keys = pre_process(A, B, keys)
-    A["___keys"] = [ str(d) for d in A[keys].to_dict(orient="records") ]
-    B["___keys"] = [ str(d) for d in B[keys].to_dict(orient="records") ]
+    A, B, keys = pre_process(A, B, keys)
+    A["___keys"] = [str(d) for d in A[keys].to_dict(orient="records")]
+    B["___keys"] = [str(d) for d in B[keys].to_dict(orient="records")]
 
     # Added elements are in B but not in A
-    deleted_keys = list( set(A["___keys"].values ) -  set(B["___keys"].values ))
+    deleted_keys = list(set(A["___keys"].values) - set(B["___keys"].values))
     # Deleted elements are in A but not in B
-    added_keys = list( set(B["___keys"].values ) -  set(A["___keys"].values ))
+    added_keys = list(set(B["___keys"].values) - set(A["___keys"].values))
 
-    A = A.set_index('___keys')
-    B = B.set_index('___keys')
+    A = A.set_index("___keys")
+    B = B.set_index("___keys")
     results = []
 
-
     for added_key in added_keys:
-        result = format_results_create_delete(B.loc[added_key,:] ,"create",keys)
+        result = format_results_create_delete(B.loc[added_key, :], "create", keys)
         results.append(result)
 
     for deleted_key in deleted_keys:
-        result = format_results_create_delete(A.loc[deleted_key,:],"delete",keys)
+        result = format_results_create_delete(A.loc[deleted_key, :], "delete", keys)
         results.append(result)
 
     common_keys = list(set(A.index.values) & set(B.index.values))
@@ -46,20 +68,21 @@ def get_diffs(before : pd.DataFrame, after: pd.DataFrame, keys: list, ignore_col
 
     for common_key in common_keys:
         for col in columns_not_keys:
-            if col in ignore_columns: 
+            if col in ignore_columns:
                 continue
-            # Check if the value has changed 
-            are_different_non_null_values = A.loc[common_key,col] != B.loc[common_key,col] and not ( pd.isna(A.loc[common_key,col] ) and pd.isna(B.loc[common_key,col] ) )
-            if are_different_non_null_values :
+            # Check if the value has changed
+            are_different_non_null_values = A.loc[common_key, col] != B.loc[common_key, col] and not (
+                pd.isna(A.loc[common_key, col]) and pd.isna(B.loc[common_key, col])
+            )
+            if are_different_non_null_values:
                 result = format_results_modify(
-                row = B.loc[common_key,:],
-                keys = keys,
-                attribute_changed = col,
-                old_value = A.loc[common_key,col],
-                new_value = B.loc[common_key,col]  )
+                    row=B.loc[common_key, :],
+                    keys=keys,
+                    attribute_changed=col,
+                    old_value=A.loc[common_key, col],
+                    new_value=B.loc[common_key, col],
+                )
                 results.append(result)
 
     df = pd.DataFrame(results)
     return df
-
-
