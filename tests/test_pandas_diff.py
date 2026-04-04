@@ -55,5 +55,10 @@ class TestStringMethods(unittest.TestCase):
         the_exception = cm.exception
         self.assertEqual(str(the_exception), "Key field incorrect-key not in columns ['hero' 'power' 'hammers']")
 
+    def test_get_key_values_function_exists(self):
+        """Verify the renamed function is importable."""
+        from pandas_diff.process_results import get_key_values
+        self.assertTrue(callable(get_key_values))
+
 if __name__ == '__main__':
     unittest.main()

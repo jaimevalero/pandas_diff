@@ -30,7 +30,7 @@ def pre_process(df_before: pd.DataFrame , df_after: pd.DataFrame, compare_column
 def ensure_keys_exist(keys,df):
     """ Ensure keys exist in columns of the dataframe"""
     if len(keys) == 0 :  
-        raise ValueError(f"Key field {key} empty")
+        raise ValueError(f"Key fields empty: {keys}")
     columns = df.columns.values
     for key in keys:
         if key not in columns:

@@ -1,6 +1,6 @@
 
 
-def get_gey_values(row, keys):
+def get_key_values(row, keys):
     key_values=""
     for key in keys:
         key_values += str(row[key]) + ","
@@ -9,7 +9,7 @@ def get_gey_values(row, keys):
 
 def format_results_create_delete(row  ,operation, keys) -> dict:
     """ Process create and delete entry"""
-    key_values = get_gey_values(row, keys)
+    key_values = get_key_values(row, keys)
     d = {
         "operation"         : operation,
         "object_keys"       : keys,
@@ -20,7 +20,7 @@ def format_results_create_delete(row  ,operation, keys) -> dict:
 
 def format_results_modify( row, keys , attribute_changed ,  old_value,  new_value ) -> dict:
     """ Process modification entry"""
-    key_values = get_gey_values(row, keys)
+    key_values = get_key_values(row, keys)
 
     d = {
         "operation"         : "modify",
