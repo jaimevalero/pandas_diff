@@ -42,7 +42,7 @@ def remove_dupes(compare_columns, df, name):
     duplicated_rows_in_df = df[df.duplicated(subset=compare_columns, keep=False)].shape[0]
     if duplicated_rows_in_df  :
         duplicated = str(df[df.duplicated(subset=compare_columns, keep=False)].to_dict(orient="records"))
-        message_warning = f"Found {duplicated_rows_in_df} duplicated rows in {name} dataframe: " + duplicated + ". Removing duplicates, except last occurrente."
+        message_warning = f"Found {duplicated_rows_in_df} duplicated rows in {name} dataframe: " + duplicated + ". Removing duplicates, except last occurrence."
         warnings.warn(message_warning)
         df = df.drop_duplicates(subset=compare_columns, keep="last")
     return df
