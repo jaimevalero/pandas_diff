@@ -1,4 +1,5 @@
 """Console script for pandas_diff."""
+
 from __future__ import annotations
 
 import sys

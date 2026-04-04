@@ -7,7 +7,6 @@ import pytest
 
 from pandas_diff import get_diffs
 
-
 # --- Existing tests, migrated to pytest ---
 
 
@@ -26,8 +25,15 @@ class TestBasicOperations:
 
     def test_columns_order(self, heroes_before, heroes_after):
         df = get_diffs(heroes_before, heroes_after, "hero")
-        expected = ["operation", "object_keys", "object_values", "object_json",
-                    "attribute_changed", "old_value", "new_value"]
+        expected = [
+            "operation",
+            "object_keys",
+            "object_values",
+            "object_json",
+            "attribute_changed",
+            "old_value",
+            "new_value",
+        ]
         assert list(df.columns) == expected
 
     def test_columns_filter(self, heroes_before, heroes_after):
@@ -119,10 +125,12 @@ class TestMultiKey:
 
     def test_composite_key_create(self):
         before = pd.DataFrame([{"a": 1, "b": "x", "val": 10}])
-        after = pd.DataFrame([
-            {"a": 1, "b": "x", "val": 10},
-            {"a": 2, "b": "y", "val": 20},
-        ])
+        after = pd.DataFrame(
+            [
+                {"a": 1, "b": "x", "val": 10},
+                {"a": 2, "b": "y", "val": 20},
+            ]
+        )
         df = get_diffs(before, after, ["a", "b"])
         assert df.shape[0] == 1
         assert df.iloc[0]["operation"] == "create"
