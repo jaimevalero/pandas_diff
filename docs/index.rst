@@ -1,20 +1,18 @@
-Welcome to Pandas Diff's documentation!
-=======================================
+pandas_diff
+===========
+
+Generate event logs of row-level changes between two pandas DataFrames.
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   readme
    installation
    examples
-   modules
-   contributing
-   authors
+   cli
    history
 
 Indices and tables
 ==================
 * :ref:`genindex`
 * :ref:`modindex`
-* :ref:`search`
