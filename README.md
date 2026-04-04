@@ -1,94 +1,80 @@
+# pandas_diff
 
-# Pandas Diff
-[![CodeFactor](https://www.codefactor.io/repository/github/jaimevalero/pandas_diff/badge)](https://www.codefactor.io/repository/github/jaimevalero/pandas_diff)
-[![Documentation Status](https://readthedocs.org/projects/pandas-diff/badge/?version=latest)](https://pandas-diff.readthedocs.io/en/latest/?badge=latest)
-[![Python 3](https://pyup.io/repos/github/jaimevalero/pandas_diff/python-3-shield.svg)](https://pyup.io/repos/github/jaimevalero/pandas_diff/)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/bd60be67332644e2a64401b6f44a3b12)](https://www.codacy.com/gh/jaimevalero/pandas_diff/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jaimevalero/pandas_diff&amp;utm_campaign=Badge_Grade)
+[![CI](https://github.com/jaimevalero/pandas_diff/actions/workflows/python-test.yml/badge.svg)](https://github.com/jaimevalero/pandas_diff/actions/workflows/python-test.yml)
+[![PyPI](https://img.shields.io/pypi/v/pandas_diff)](https://pypi.org/project/pandas_diff/)
+[![Python](https://img.shields.io/pypi/pyversions/pandas_diff)](https://pypi.org/project/pandas_diff/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Get differences between two pandas dataframes 
+Generate event logs of row-level changes between two pandas DataFrames.
+
+Not a statistical comparison tool — pandas_diff tells you **what changed**: which rows were created, deleted, or modified, and exactly which fields changed.
 
 ## Installation
 
-Install pandas_diff with pip
-
 ```bash
 pip install pandas_diff
+
+# With Parquet support
+pip install pandas_diff[parquet]
 ```
 
-
-## Usage/Examples
+## Quick start
 
 ```python
-import pandas_diff as pd_diff
-
 import pandas as pd
+from pandas_diff import get_diffs
 
-# Create two example dataframes
-df_infinity_war = pd.DataFrame([
-                {"hero" : "hulk" , "power" : "strength"},
-                {"hero" : "black_widow" , "power" : "spy"},
-                {"hero" : "thor" , "hammers" : 0 },
-                {"hero" : "thor" , "hammers" : 1 } ] )
-df_endgame = pd.DataFrame([
-                {"hero" : "hulk" , "power" : "smart"},
-                {"hero" : "captain marvel" , "power" : "strength"},
-                {"hero" : "thor" , "hammers" : 2 } ] )
+before = pd.DataFrame([
+    {"hero": "hulk", "power": "strength"},
+    {"hero": "black_widow", "power": "spy"},
+    {"hero": "thor", "hammers": 0},
+])
+after = pd.DataFrame([
+    {"hero": "hulk", "power": "smart"},
+    {"hero": "captain marvel", "power": "strength"},
+    {"hero": "thor", "hammers": 2},
+])
 
-# Get differences, using the key "hero"
-df = pd_diff.get_diffs(df_infinity_war ,df_endgame ,"hero")
-
-df
-
-  operation object_keys  object_values                     object_json                     attribute_changed old_value new_value
-0   create     [hero]    captain marvel  {'hero': 'captain marvel', 'power': 'strength'...           NaN           NaN      NaN
-1   delete     [hero]       black_widow  {'hero': 'black_widow', 'power': 'spy', 'hamme...           NaN           NaN      NaN
-2   modify     [hero]              thor  {'hero': 'thor', 'power': nan, 'hammers': 2.0}          hammers             1        2
-3   modify     [hero]              hulk  {'hero': 'hulk', 'power': 'smart', 'hammers': ...         power      strength    smart
-
+df = get_diffs(before, after, keys="hero")
 ```
 
-## Why pandas diff ? Cases of use
+| operation | object_keys | object_values  | attribute_changed | old_value | new_value |
+|-----------|-------------|----------------|-------------------|-----------|-----------|
+| create    | [hero]      | captain marvel |                   |           |           |
+| delete    | [hero]      | black_widow    |                   |           |           |
+| modify    | [hero]      | hulk           | power             | strength  | smart     |
+| modify    | [hero]      | thor           | hammers           | 0         | 2         |
 
-<h3>Migrate from batch to event driven architecture</h3>
+## CLI
 
-In my work, we use a lot of data pipelines to get info from external
-platforms, (active directory, github, jira). We load the new data
-replacing the entire table.
+```bash
+pandas_diff before.csv after.csv --keys id
+pandas_diff old.parquet new.parquet --keys name,date --format json
+pandas_diff a.csv b.csv --keys id --ignore updated_at -o diff.csv
+```
 
-By using pandas_diff we detect how the infraestructure changes between
-executions, and stream those change events into a kafka cluster, so
-other teams could suscribe to their favourite events. Also, by defining
-a pandas_diff step in the master pipeline, every item in our project has
-ther life cycle events controlled.
+Supported file formats: CSV, JSON (flat records), Parquet.
 
+## Use cases
 
-<h3>Events log</h3>
+- **Batch to event-driven migration** — Detect changes between pipeline runs and stream them to Kafka.
+- **Audit event logs** — Track how resources change over time.
+- **Data conciliation** — Compare a CMDB against the real state of infrastructure.
+- **Environment sync** — Propagate changes between production and disaster recovery.
 
+## API
 
-For every item in a table, by using pandas_diff you will have an event
-log to audit listing how the resources are being consumed.
+```python
+get_diffs(
+    before: pd.DataFrame,      # Previous state
+    after: pd.DataFrame,        # Current state
+    keys: list[str] | str,      # Column(s) identifying each row
+    ignore_columns: list[str],  # Columns to skip (optional)
+) -> pd.DataFrame
+```
 
-<h3>Conciliation of info</h3>
+Returns a DataFrame with columns: `operation`, `object_keys`, `object_values`, `object_json`, `attribute_changed`, `old_value`, `new_value`.
 
-To conciliate one datasource against the source of truth. Eg: You have a CMDB controlling with info regarding virtual machines. As there are several methods for creating those VMs, you use pandas_diff to replicate state of the infraestructure against the CMDB. 
+## License
 
-<h3>Disaster recovery environments</h3>
-Eg: You have a disaster recovery environment for your platform. You can synch two platforms, production and disaster recovery, using their APIs and pandas_diff to propagate the changes (in objects, users, permissions) from production to disaster recovery environments.
-
-
-## Features
-
-* Key multicolum
-* Blacklist of columns
-
-## Roadmap
-
-* Support for stand alone app
-
-## Documentation
-
-[Documentation](https://pandas-diff.readthedocs.io/en/latest/)
-
-
-
-
+MIT
